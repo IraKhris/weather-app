@@ -1,0 +1,78 @@
+body {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Raleway", sans-serif;
+}
+
+.city {
+  font-size: 60px;
+  font-weight: 300;
+  margin: 0 auto;
+}
+.search-block {
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+#site-search {
+  border-radius: 5px;
+  border: none;
+}
+
+#current-location {
+  margin: 0 auto;
+  padding: 0 45px;
+  border-radius: 5px;
+  margin: 10px 0 0 0;
+  text-align: center;
+  background-color: rgb(0, 0, 0, 0.5);
+  color: #fff;
+  transition: all 200ms ease-in-out;
+}
+
+#current-location:hover {
+  background-color: rgb(255, 255, 255, 0.6);
+  color: rgb(0, 0, 0, 0.5);
+}
+
+.rain-image {
+  width: 500px;
+  opacity: 0.9;
+  text-align: center;
+  margin: 0 auto;
+}
+.weekday {
+  color: white;
+}
+.weekday-temperature {
+  font-size: 14px;
+}
+.circle {
+  text-align: center;
+  font-size: 70px;
+  margin: 10px auto;
+  padding: 26px;
+  background-color: rgb(0, 0, 0, 0.5);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.day-temperature {
+  font-size: 60px;
+  font-weight: 300;
+  margin: 0 auto;
+}
+.weekday-block {
+  margin: 25px 0;
+  width: 88px;
+  text-align: center;
+  background-color: rgb(0, 0, 0, 0.5);
+  border: none;
+}
+#celsius,
+#farenheit {
+  font-size: 50px;
+}
+#divider {
+  font-size: 45px;
+}
