@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="src/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="card bg-dark text-white rain-image">
+      <img src="images/rain.jpg" class="card-img" alt="rain" />
+      <div class="card-img-overlay">
+        <div class="card search-block">
+          <div class="card-body">
+            <form id="search">
+              <input type="search" id="site-search" placeholder="Search city" />
+            </form>
+            <button id="current-location">Current Location</button>
+          </div>
+        </div>
+        <div class="circle">🌧</div>
+        <h1 class="card-title city" id="city-name">Rome</h1>
+        <div class="day-temperature">
+          <span id="current-degree">19</span> <a href="#" id="celsius">С°</a
+          ><span id="divider"> | </span><a href="#" id="farenheit">F°</a>
+        </div>
+        <h3 class="card-text" class="date" id="current-date">Day and Time</h3>
+        <div class="row justify-content-md-center">
+          <div class="card border-info mb-1 mx-auto weekday-block">
+            <div class="card-header weekday" id="first-day">Tue</div>
+            <div class="card-body text-info">
+              <h5 class="card-title weekday-temperature">7° | 15°</h5>
+              <p class="card-text">🌧</p>
+            </div>
+          </div>
+          <div class="card border-info mb-1 mx-auto weekday-block">
+            <div class="card-header weekday" id="second-day">Wed</div>
+            <div class="card-body text-info">
+              <h5 class="card-title weekday-temperature">8° | 17°</h5>
+              <p class="card-text">☁️</p>
+            </div>
+          </div>
+          <div class="card border-info mb-1 mx-auto weekday-block">
+            <div class="card-header weekday" id="third-day">Thu</div>
+            <div class="card-body text-info">
+              <h5 class="card-title weekday-temperature">11° | 20°</h5>
+              <p class="card-text">🌥</p>
+            </div>
+          </div>
+          <div class="card border-info mb-1 mx-auto weekday-block">
+            <div class="card-header weekday" id="fourth-day">Fri</div>
+            <div class="card-body text-info">
+              <h5 class="card-title weekday-temperature">10° | 21°</h5>
+              <p class="card-text">⛅️</p>
+            </div>
+          </div>
+          <div class="card border-info mb-1 mx-auto weekday-block">
+            <div class="card-header weekday" id="fifth-day">Sat</div>
+            <div class="card-body text-info">
+              <h5 class="card-title weekday-temperature">12° | 22°</h5>
+              <p class="card-text">☀️</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
