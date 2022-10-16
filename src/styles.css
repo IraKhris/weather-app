@@ -58,7 +58,7 @@ body {
   border-radius: 50%;
 }
 .day-temperature {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 300;
   margin: 0 auto;
 }
@@ -69,10 +69,15 @@ body {
   background-color: rgb(0, 0, 0, 0.5);
   border: none;
 }
+
 #celsius,
 #farenheit {
-  font-size: 50px;
+  font-size: 40px;
 }
 #divider {
   font-size: 45px;
+}
+.link-to-code {
+  margin: 20px auto;
+  text-align: center;
 }
