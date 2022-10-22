@@ -82,6 +82,12 @@ function showTemperature(response) {
   let currentTemperature = document.querySelector("#current-degree");
   cityName.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = `${temperature}`;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 function showPosition(position) {
   let latitude = position.coords.latitude;
@@ -110,6 +116,12 @@ function showSearchTemperature(response) {
   let currentTemperature = document.querySelector("#current-degree");
   cityName.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = `${temperature}`;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 let searchCity = document.querySelector("#search");
