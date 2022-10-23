@@ -85,10 +85,13 @@ function showTemperature(response) {
   let cityName = document.querySelector("#city-name");
   let currentTemperature = document.querySelector("#current-degree");
   let iconElement = document.querySelector("#icon");
+  let descriptionElement = document.querySelector("#weather-description");
+
   celsius.classList.add("active");
   cityName.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = `${temperature}`;
   celsiusTemperature = response.data.main.temp;
+  descriptionElement.innerHTML = response.data.weather[0].description;
   iconElement.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -122,6 +125,8 @@ function showSearchTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let cityName = document.querySelector("#city-name");
   let currentTemperature = document.querySelector("#current-degree");
+  let descriptionElement = document.querySelector("#weather-description");
+  descriptionElement.innerHTML = response.data.weather[0].description;
   cityName.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = `${temperature}`;
   celsius.classList.add("active");

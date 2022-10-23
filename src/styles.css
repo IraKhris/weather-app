@@ -82,6 +82,7 @@ body {
 .units {
   margin-top: 16px;
   margin-left: 10px;
+  position: relative;
 }
 
 .divider {
@@ -103,4 +104,11 @@ body {
 
 .day-temperature .active:hover {
   text-decoration: none;
+}
+#weather-description {
+  font-size: 20px;
+}
+
+#weather-description:first-letter {
+  text-transform: capitalize;
 }
