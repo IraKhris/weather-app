@@ -3,6 +3,9 @@ body {
   margin-bottom: 20px;
   font-family: "Raleway", sans-serif;
 }
+.date {
+  font-size: 18px;
+}
 
 .city {
   font-size: 60px;
