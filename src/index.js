@@ -9,24 +9,24 @@ function changeDayTime(current) {
 }
 
 function changeFirstDay(currentDay) {
-  let day = document.querySelector("#first-day");
-  day.innerHTML = `${firstDay}`;
+  let firstDayElement = document.querySelector("#first-day");
+  firstDayElement = `${firstDay}`;
 }
 function changeSecondDay(currentDay) {
-  let day = document.querySelector("#second-day");
-  day.innerHTML = `${secondDay}`;
+  let secondDayElement = document.querySelector("#second-day");
+  secondDayElement = `${secondDay}`;
 }
 function changeThirdDay(currentDay) {
-  let day = document.querySelector("#third-day");
-  day.innerHTML = `${thirdDay}`;
+  let thirdDayElement = document.querySelector("#third-day");
+  thirdDayElement = `${thirdDay}`;
 }
 function changeFourthDay(currentDay) {
-  let day = document.querySelector("#fourth-day");
-  day.innerHTML = `${fourthDay}`;
+  let fourthDayElement = document.querySelector("#fourth-day");
+  fourthDayElement = `${fourthDay}`;
 }
 function changeFifthDay(currentDay) {
-  let day = document.querySelector("#fifth-day");
-  day.innerHTML = `${fifthDay}`;
+  let fifthDayElement = document.querySelector("#fifth-day");
+  fifthDayElement = `${fifthDay}`;
 }
 
 let currentDate = document.querySelector("#current-date");
@@ -41,6 +41,7 @@ let days = [
   "Friday",
   "Saturday",
 ];
+
 let day = days[now.getDay()];
 let hour = now.getHours();
 let minute = now.getUTCMinutes();
@@ -51,6 +52,7 @@ let secondDay = nextDays[now.getDay() + 2];
 let thirdDay = nextDays[now.getDay() + 3];
 let fourthDay = nextDays[now.getDay() + 4];
 let fifthDay = nextDays[now.getDay() + 5];
+
 changeDayTime(currentDate);
 changeFirstDay(firstDay);
 changeSecondDay(secondDay);
@@ -80,12 +82,12 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let cityName = document.querySelector("#city-name");
   let currentTemperature = document.querySelector("#current-degree");
+  let iconElement = document.querySelector("#icon");
   cityName.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = `${temperature}`;
-  let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.PNG`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
@@ -119,9 +121,13 @@ function showSearchTemperature(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.PNG`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+}
+function showCurrentWeather(position) {
+  position.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
 }
 
 let searchCity = document.querySelector("#search");
@@ -129,8 +135,3 @@ searchCity.addEventListener("submit", changeCity);
 
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", showCurrentWeather);
-
-function showCurrentWeather(position) {
-  position.preventDefault();
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
