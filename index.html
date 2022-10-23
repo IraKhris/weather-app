@@ -8,10 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400&display=swap"
       rel="stylesheet"
     />
     <link
@@ -45,9 +43,12 @@
             Last updated:
             <span id="current-date">Day and Time</span>
           </h3>
-          <div class="day-temperature">
-            <span id="current-degree">19</span> <a href="#" id="celsius">С°</a
-            ><span id="divider"> | </span><a href="#" id="farenheit">F°</a>
+          <div class="day-temperature d-flex justify-content-center">
+            <span id="current-degree"> 19 </span>
+            <span class="units d-flex justify-content-center">
+              <a href="#" id="celsius">С° </a><span class="divider"> | </span>
+              <a href="#" id="farenheit">F°</a>
+            </span>
           </div>
 
           <div class="row justify-content-md-center">
