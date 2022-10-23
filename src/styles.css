@@ -83,3 +83,12 @@ body {
   margin: 20px auto;
   text-align: center;
 }
+
+.day-temperature .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.day-temperature .active:hover {
+  text-decoration: none;
+}

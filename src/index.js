@@ -1,4 +1,4 @@
-//Feature #1
+//Function Day and Tima
 function changeDayTime(current) {
   let dayTime = document.querySelector("#current-date");
   if (minute < 10) {
@@ -8,6 +8,7 @@ function changeDayTime(current) {
   }
 }
 
+//Function Change Forecast Days
 function changeFirstDay(currentDay) {
   let firstDayElement = document.querySelector("#first-day");
   firstDayElement = `${firstDay}`;
@@ -60,37 +61,42 @@ changeThirdDay(thirdDay);
 changeFourthDay(fourthDay);
 changeFifthDay(fifthDay);
 
-//Feature #3
+//Function Change Celsius
 function changeCelsiusScale(event) {
   event.preventDefault();
   let currentDegree = document.querySelector("#current-degree");
-  currentDegree.innerHTML = `19`;
+  celsius.classList.add("active");
+  farenheit.classList.remove("active");
+  currentDegree.innerHTML = Math.round(celsiusTemperature);
 }
 
+// Function Change Farenheit
 function changeFarenheitScale(event) {
   event.preventDefault();
   let currentDegree = document.querySelector("#current-degree");
-  currentDegree.innerHTML = `66`;
+  celsius.classList.remove("active");
+  farenheit.classList.add("active");
+  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
+  currentDegree.innerHTML = Math.round(fahrenheiTemperature);
 }
-
-let celsius = document.querySelector("#celsius");
-let farenheit = document.querySelector("#farenheit");
-celsius.addEventListener("click", changeCelsiusScale);
-farenheit.addEventListener("click", changeFarenheitScale);
-
+// Function Show Temperature
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let cityName = document.querySelector("#city-name");
   let currentTemperature = document.querySelector("#current-degree");
   let iconElement = document.querySelector("#icon");
+  celsius.classList.add("active");
   cityName.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = `${temperature}`;
+  celsiusTemperature = response.data.main.temp;
   iconElement.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
+
+// Function Get Position
 function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -100,8 +106,7 @@ function showPosition(position) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-navigator.geolocation.getCurrentPosition(showPosition);
-
+// Function Change City Name after Searcg
 function changeCity(response) {
   response.preventDefault();
   let citySearch = document.querySelector("#site-search");
@@ -112,12 +117,14 @@ function changeCity(response) {
   axios.get(apiUrl).then(showSearchTemperature);
 }
 
+// Function Search Temperature
 function showSearchTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let cityName = document.querySelector("#city-name");
   let currentTemperature = document.querySelector("#current-degree");
   cityName.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = `${temperature}`;
+  celsius.classList.add("active");
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
@@ -125,10 +132,21 @@ function showSearchTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
+
+// Function Call Current Temperature based on Geolocation
 function showCurrentWeather(position) {
   position.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+
+navigator.geolocation.getCurrentPosition(showPosition);
+
+let celsiusTemperature = null;
+
+let celsius = document.querySelector("#celsius");
+let farenheit = document.querySelector("#farenheit");
+celsius.addEventListener("click", changeCelsiusScale);
+farenheit.addEventListener("click", changeFarenheitScale);
 
 let searchCity = document.querySelector("#search");
 searchCity.addEventListener("submit", changeCity);
