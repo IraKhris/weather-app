@@ -101,6 +101,26 @@ function showTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  let backgroundElement = document.querySelector("#background-image");
+
+  if (response.data.weather[0].main === "Clear") {
+    backgroundElement.setAttribute("src", `images/clear.jpg`);
+  } else if (response.data.weather[0].main === "Clouds") {
+    backgroundElement.setAttribute("src", `images/clouds.jpg`);
+  } else if (response.data.weather[0].main === "Drizzle") {
+    backgroundElement.setAttribute("src", `images/drizzle.jpg`);
+  } else if (response.data.weather[0].main === "Fog") {
+    backgroundElement.setAttribute("src", `images/fog.jpg`);
+  } else if (response.data.weather[0].main === "Mist") {
+    backgroundElement.setAttribute("src", `images/mist.jpg`);
+  } else if (response.data.weather[0].main === "Rain") {
+    backgroundElement.setAttribute("src", `images/rain.jpg`);
+  } else if (response.data.weather[0].main === "Snow") {
+    backgroundElement.setAttribute("src", `images/snow.jpg`);
+  } else if (response.data.weather[0].main === "Thunderstorm") {
+    backgroundElement.setAttribute("src", `images/thunderstorm.jpg`);
+  }
 }
 
 // Function Get Position
@@ -144,6 +164,26 @@ function showSearchTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  let backgroundElement = document.querySelector("#background-image");
+
+  if (response.data.weather[0].main === "Clear") {
+    backgroundElement.setAttribute("src", `images/clear.jpg`);
+  } else if (response.data.weather[0].main === "Clouds") {
+    backgroundElement.setAttribute("src", `images/clouds.jpg`);
+  } else if (response.data.weather[0].main === "Drizzle") {
+    backgroundElement.setAttribute("src", `images/drizzle.jpg`);
+  } else if (response.data.weather[0].main === "Fog") {
+    backgroundElement.setAttribute("src", `images/fog.jpg`);
+  } else if (response.data.weather[0].main === "Mist") {
+    backgroundElement.setAttribute("src", `images/mist.jpg`);
+  } else if (response.data.weather[0].main === "Rain") {
+    backgroundElement.setAttribute("src", `images/rain.jpg`);
+  } else if (response.data.weather[0].main === "Snow") {
+    backgroundElement.setAttribute("src", `images/snow.jpg`);
+  } else if (response.data.weather[0].main === "Thunderstorm") {
+    backgroundElement.setAttribute("src", `images/thunderstorm.jpg`);
+  }
 }
 
 // Function Call Current Temperature based on Geolocation
