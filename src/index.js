@@ -86,12 +86,15 @@ function showTemperature(response) {
   let currentTemperature = document.querySelector("#current-degree");
   let iconElement = document.querySelector("#icon");
   let descriptionElement = document.querySelector("#weather-description");
-
+  let windElement = document.querySelector("#wind-speed");
+  let humidityElement = document.querySelector("#humidity-level");
   celsius.classList.add("active");
   cityName.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = `${temperature}`;
   celsiusTemperature = response.data.main.temp;
   descriptionElement.innerHTML = response.data.weather[0].description;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  humidityElement.innerHTML = response.data.main.humidity;
   iconElement.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -126,9 +129,13 @@ function showSearchTemperature(response) {
   let cityName = document.querySelector("#city-name");
   let currentTemperature = document.querySelector("#current-degree");
   let descriptionElement = document.querySelector("#weather-description");
+  let windElement = document.querySelector("#wind-speed");
+  let humidityElement = document.querySelector("#humidity-level");
+  humidityElement.innerHTML = response.data.main.humidity;
   descriptionElement.innerHTML = response.data.weather[0].description;
   cityName.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = `${temperature}`;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
   celsius.classList.add("active");
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
