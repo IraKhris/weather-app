@@ -22,7 +22,7 @@
   </head>
   <body>
     <div class="body">
-      <div class="card bg-dark text-white rain-image">
+      <div class="card bg-dark text-white rain-image" id="background-image">
         <img src="images/rain.jpg" class="card-img" alt="rain" />
         <div class="card-img-overlay">
           <div class="card search-block">
@@ -37,7 +37,13 @@
               <button id="current-location">Current Location</button>
             </div>
           </div>
-          <div class="circle"><img src="" alt="icon" id="icon" /></div>
+          <div class="circle">
+            <img
+              src="https://openweathermap.org/img/wn/01d@2x.png"
+              alt="icon"
+              id="icon"
+            />
+          </div>
           <h1 class="card-title city" id="city-name">Rome</h1>
           <h3 class="card-text date">
             Last updated:

@@ -79,6 +79,7 @@ function changeFarenheitScale(event) {
   let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
   currentDegree.innerHTML = Math.round(fahrenheiTemperature);
 }
+
 // Function Show Temperature
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
