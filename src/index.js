@@ -3,9 +3,9 @@ function changeDayTime(current) {
   let dayTime = document.querySelector("#current-date");
 
   if (minute < 10) {
-    dayTime.innerHTML = `${day}, ${hour}:0${minute}`;
+    dayTime.innerHTML = `Last updated: ${day}, ${hour}:0${minute}`;
   } else {
-    dayTime.innerHTML = `${day}, ${hour}:${minute}`;
+    dayTime.innerHTML = `Last updated: ${day}, ${hour}:${minute}`;
   }
 }
 
@@ -86,6 +86,7 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+// Function change background image
 function changeBackground(conditions) {
   let backgroundElement = document.querySelector("#background-image");
 
