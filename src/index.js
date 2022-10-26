@@ -173,49 +173,7 @@ function changeCity(response) {
   let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
   let unit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(showSearchTemperature);
-}
-
-// Function Search Temperature
-function showSearchTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let cityName = document.querySelector("#city-name");
-  let currentTemperature = document.querySelector("#current-degree");
-  let descriptionElement = document.querySelector("#weather-description");
-  let windElement = document.querySelector("#wind-speed");
-  let humidityElement = document.querySelector("#humidity-level");
-  humidityElement.innerHTML = response.data.main.humidity;
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  cityName.innerHTML = `${response.data.name}`;
-  currentTemperature.innerHTML = `${temperature}`;
-  windElement.innerHTML = Math.round(response.data.wind.speed);
-  celsius.classList.add("active");
-  let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
-
-  let backgroundElement = document.querySelector("#background-image");
-
-  if (response.data.weather[0].main === "Clear") {
-    backgroundElement.setAttribute("src", `images/clear.jpg`);
-  } else if (response.data.weather[0].main === "Clouds") {
-    backgroundElement.setAttribute("src", `images/clouds.jpg`);
-  } else if (response.data.weather[0].main === "Drizzle") {
-    backgroundElement.setAttribute("src", `images/drizzle.jpg`);
-  } else if (response.data.weather[0].main === "Fog") {
-    backgroundElement.setAttribute("src", `images/fog.jpg`);
-  } else if (response.data.weather[0].main === "Mist") {
-    backgroundElement.setAttribute("src", `images/mist.jpg`);
-  } else if (response.data.weather[0].main === "Rain") {
-    backgroundElement.setAttribute("src", `images/rain.jpg`);
-  } else if (response.data.weather[0].main === "Snow") {
-    backgroundElement.setAttribute("src", `images/snow.jpg`);
-  } else if (response.data.weather[0].main === "Thunderstorm") {
-    backgroundElement.setAttribute("src", `images/thunderstorm.jpg`);
-  }
+  axios.get(apiUrl).then(showTemperature);
 }
 
 // Function Call Current Temperature based on Geolocation
