@@ -2,31 +2,28 @@
 function changeDayTime(current) {
   let dayTime = document.querySelector("#current-date");
 
+  let now = new Date();
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let day = days[now.getDay()];
+  let hour = now.getHours();
+  let minute = now.getUTCMinutes();
+
   if (minute < 10) {
     dayTime.innerHTML = `Last updated: ${day}, ${hour}:0${minute}`;
   } else {
     dayTime.innerHTML = `Last updated: ${day}, ${hour}:${minute}`;
   }
 }
-
-let currentDate = document.querySelector("#current-date");
-let now = new Date();
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
-let day = days[now.getDay()];
-let hour = now.getHours();
-let minute = now.getUTCMinutes();
-
-changeDayTime(currentDate);
 
 // Funciton return day names
 function formatDay(timestamp) {
@@ -146,7 +143,7 @@ function showPosition(position) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-// Function Change City Name after Searcg
+// Function Change City Name after Search
 function changeCity(response) {
   response.preventDefault();
   let citySearch = document.querySelector("#site-search");
@@ -162,6 +159,9 @@ function showCurrentWeather(position) {
   position.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+
+let currentDate = document.querySelector("#current-date");
+changeDayTime(currentDate);
 
 navigator.geolocation.getCurrentPosition(showPosition);
 
