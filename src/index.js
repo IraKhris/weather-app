@@ -70,6 +70,7 @@ function changeCelsiusScale(event) {
   currentDegree.innerHTML = Math.round(celsiusTemperature);
 }
 
+//Function displays forecast
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
@@ -92,9 +93,7 @@ function displayForecast() {
           width="42"
         /></p>
               </div>
-            </div>
-
-  
+            </div> 
   `;
   });
 
@@ -110,6 +109,35 @@ function changeFarenheitScale(event) {
   farenheit.classList.add("active");
   let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
   currentDegree.innerHTML = Math.round(fahrenheiTemperature);
+}
+
+// Function getForecast
+function getForecast(coordinates) {
+  let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function changeBackground(conditions) {
+  let backgroundElement = document.querySelector("#background-image");
+
+  if (conditions === "Clear") {
+    backgroundElement.setAttribute("src", `images/clear.jpg`);
+  } else if (conditions === "Clouds") {
+    backgroundElement.setAttribute("src", `images/clouds.jpg`);
+  } else if (conditions === "Drizzle") {
+    backgroundElement.setAttribute("src", `images/drizzle.jpg`);
+  } else if (conditions === "Fog") {
+    backgroundElement.setAttribute("src", `images/fog.jpg`);
+  } else if (conditions === "Mist") {
+    backgroundElement.setAttribute("src", `images/mist.jpg`);
+  } else if (conditions === "Rain") {
+    backgroundElement.setAttribute("src", `images/rain.jpg`);
+  } else if (conditions === "Snow") {
+    backgroundElement.setAttribute("src", `images/snow.jpg`);
+  } else if (conditions === "Thunderstorm") {
+    backgroundElement.setAttribute("src", `images/thunderstorm.jpg`);
+  }
 }
 
 // Function Show Temperature
@@ -134,25 +162,10 @@ function showTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-  let backgroundElement = document.querySelector("#background-image");
+  getForecast(response.data.coord);
 
-  if (response.data.weather[0].main === "Clear") {
-    backgroundElement.setAttribute("src", `images/clear.jpg`);
-  } else if (response.data.weather[0].main === "Clouds") {
-    backgroundElement.setAttribute("src", `images/clouds.jpg`);
-  } else if (response.data.weather[0].main === "Drizzle") {
-    backgroundElement.setAttribute("src", `images/drizzle.jpg`);
-  } else if (response.data.weather[0].main === "Fog") {
-    backgroundElement.setAttribute("src", `images/fog.jpg`);
-  } else if (response.data.weather[0].main === "Mist") {
-    backgroundElement.setAttribute("src", `images/mist.jpg`);
-  } else if (response.data.weather[0].main === "Rain") {
-    backgroundElement.setAttribute("src", `images/rain.jpg`);
-  } else if (response.data.weather[0].main === "Snow") {
-    backgroundElement.setAttribute("src", `images/snow.jpg`);
-  } else if (response.data.weather[0].main === "Thunderstorm") {
-    backgroundElement.setAttribute("src", `images/thunderstorm.jpg`);
-  }
+  let conditions = response.data.weather[0].main;
+  changeBackground(conditions);
 }
 
 // Function Get Position
@@ -196,5 +209,3 @@ searchCity.addEventListener("submit", changeCity);
 
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", showCurrentWeather);
-
-displayForecast();
