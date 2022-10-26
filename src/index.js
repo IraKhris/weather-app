@@ -9,26 +9,26 @@ function changeDayTime(current) {
 }
 
 //Function Change Forecast Days
-function changeFirstDay(currentDay) {
-  let firstDayElement = document.querySelector("#first-day");
-  firstDayElement = `${firstDay}`;
-}
-function changeSecondDay(currentDay) {
-  let secondDayElement = document.querySelector("#second-day");
-  secondDayElement = `${secondDay}`;
-}
-function changeThirdDay(currentDay) {
-  let thirdDayElement = document.querySelector("#third-day");
-  thirdDayElement = `${thirdDay}`;
-}
-function changeFourthDay(currentDay) {
-  let fourthDayElement = document.querySelector("#fourth-day");
-  fourthDayElement = `${fourthDay}`;
-}
-function changeFifthDay(currentDay) {
-  let fifthDayElement = document.querySelector("#fifth-day");
-  fifthDayElement = `${fifthDay}`;
-}
+// function changeFirstDay(currentDay) {
+//   let firstDayElement = document.querySelector("#first-day");
+//   firstDayElement = `${firstDay}`;
+// }
+// function changeSecondDay(currentDay) {
+//   let secondDayElement = document.querySelector("#second-day");
+//   secondDayElement = `${secondDay}`;
+// }
+// function changeThirdDay(currentDay) {
+//   let thirdDayElement = document.querySelector("#third-day");
+//   thirdDayElement = `${thirdDay}`;
+// }
+// function changeFourthDay(currentDay) {
+//   let fourthDayElement = document.querySelector("#fourth-day");
+//   fourthDayElement = `${fourthDay}`;
+// }
+// function changeFifthDay(currentDay) {
+//   let fifthDayElement = document.querySelector("#fifth-day");
+//   fifthDayElement = `${fifthDay}`;
+// }
 
 let currentDate = document.querySelector("#current-date");
 let now = new Date();
@@ -47,19 +47,19 @@ let day = days[now.getDay()];
 let hour = now.getHours();
 let minute = now.getUTCMinutes();
 
-let nextDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let firstDay = nextDays[now.getDay() + 1];
-let secondDay = nextDays[now.getDay() + 2];
-let thirdDay = nextDays[now.getDay() + 3];
-let fourthDay = nextDays[now.getDay() + 4];
-let fifthDay = nextDays[now.getDay() + 5];
+// let nextDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+// let firstDay = nextDays[now.getDay() + 1];
+// let secondDay = nextDays[now.getDay() + 2];
+// let thirdDay = nextDays[now.getDay() + 3];
+// let fourthDay = nextDays[now.getDay() + 4];
+// let fifthDay = nextDays[now.getDay() + 5];
 
-changeDayTime(currentDate);
-changeFirstDay(firstDay);
-changeSecondDay(secondDay);
-changeThirdDay(thirdDay);
-changeFourthDay(fourthDay);
-changeFifthDay(fifthDay);
+// changeDayTime(currentDate);
+// changeFirstDay(firstDay);
+// changeSecondDay(secondDay);
+// changeThirdDay(thirdDay);
+// changeFourthDay(fourthDay);
+// changeFifthDay(fifthDay);
 
 //Function Change Celsius
 function changeCelsiusScale(event) {
@@ -68,6 +68,38 @@ function changeCelsiusScale(event) {
   celsius.classList.add("active");
   farenheit.classList.remove("active");
   currentDegree.innerHTML = Math.round(celsiusTemperature);
+}
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="weather-forecast row justify-content-md-center">
+            <div class="card border-info mb-1 weekday-block">
+              <div class="card-header weekday" id="first-day">${day}</div>
+              <div class="card-body text-info">
+                <h5 class="card-title weekday-temperature"><span class="weather-forecast-temperature-max"> 18° </span>
+          <span class="weather-forecast-temperature-min"> 12° </span></h5>
+                <p class="card-text"><img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        /></p>
+              </div>
+            </div>
+
+  
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 // Function Change Farenheit
@@ -206,3 +238,5 @@ searchCity.addEventListener("submit", changeCity);
 
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", showCurrentWeather);
+
+displayForecast();
