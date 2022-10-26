@@ -75,31 +75,14 @@ body {
   margin: 20px auto;
   text-align: center;
 }
-.units {
-  margin-top: 16px;
-  margin-left: 10px;
+.unit {
+  font-size: 20px;
+  margin-top: 18px;
+  margin-left: 5px;
   position: relative;
 }
-
-.divider {
-  margin-top: 2px;
-  margin-left: 4px;
-  margin-right: 6px;
-  font-size: 20px;
-}
-#celsius,
-#farenheit {
-  font-size: 24px;
-  line-height: 1.5;
-}
-
-.day-temperature .active {
-  color: rgb(33, 33, 33);
-  cursor: default;
-}
-
-.day-temperature .active:hover {
-  text-decoration: none;
+.day-temperature {
+  margin-left: 22.27px;
 }
 #weather-description {
   font-size: 20px;

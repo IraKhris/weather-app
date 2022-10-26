@@ -1,34 +1,13 @@
-//Function Day and Tima
+//Function Day and Time
 function changeDayTime(current) {
   let dayTime = document.querySelector("#current-date");
+
   if (minute < 10) {
     dayTime.innerHTML = `${day}, ${hour}:0${minute}`;
   } else {
     dayTime.innerHTML = `${day}, ${hour}:${minute}`;
   }
 }
-
-//Function Change Forecast Days
-// function changeFirstDay(currentDay) {
-//   let firstDayElement = document.querySelector("#first-day");
-//   firstDayElement = `${firstDay}`;
-// }
-// function changeSecondDay(currentDay) {
-//   let secondDayElement = document.querySelector("#second-day");
-//   secondDayElement = `${secondDay}`;
-// }
-// function changeThirdDay(currentDay) {
-//   let thirdDayElement = document.querySelector("#third-day");
-//   thirdDayElement = `${thirdDay}`;
-// }
-// function changeFourthDay(currentDay) {
-//   let fourthDayElement = document.querySelector("#fourth-day");
-//   fourthDayElement = `${fourthDay}`;
-// }
-// function changeFifthDay(currentDay) {
-//   let fifthDayElement = document.querySelector("#fifth-day");
-//   fifthDayElement = `${fifthDay}`;
-// }
 
 let currentDate = document.querySelector("#current-date");
 let now = new Date();
@@ -47,28 +26,7 @@ let day = days[now.getDay()];
 let hour = now.getHours();
 let minute = now.getUTCMinutes();
 
-// let nextDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-// let firstDay = nextDays[now.getDay() + 1];
-// let secondDay = nextDays[now.getDay() + 2];
-// let thirdDay = nextDays[now.getDay() + 3];
-// let fourthDay = nextDays[now.getDay() + 4];
-// let fifthDay = nextDays[now.getDay() + 5];
-
-// changeDayTime(currentDate);
-// changeFirstDay(firstDay);
-// changeSecondDay(secondDay);
-// changeThirdDay(thirdDay);
-// changeFourthDay(fourthDay);
-// changeFifthDay(fifthDay);
-
-//Function Change Celsius
-function changeCelsiusScale(event) {
-  event.preventDefault();
-  let currentDegree = document.querySelector("#current-degree");
-  celsius.classList.add("active");
-  farenheit.classList.remove("active");
-  currentDegree.innerHTML = Math.round(celsiusTemperature);
-}
+changeDayTime(currentDate);
 
 // Funciton return day names
 function formatDay(timestamp) {
@@ -121,16 +79,6 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-// Function Change Farenheit
-function changeFarenheitScale(event) {
-  event.preventDefault();
-  let currentDegree = document.querySelector("#current-degree");
-  celsius.classList.remove("active");
-  farenheit.classList.add("active");
-  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
-  currentDegree.innerHTML = Math.round(fahrenheiTemperature);
-}
-
 // Function getForecast
 function getForecast(coordinates) {
   let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
@@ -169,7 +117,6 @@ function showTemperature(response) {
   let descriptionElement = document.querySelector("#weather-description");
   let windElement = document.querySelector("#wind-speed");
   let humidityElement = document.querySelector("#humidity-level");
-  celsius.classList.add("active");
   cityName.innerHTML = `${response.data.name}`;
   currentTemperature.innerHTML = `${temperature}`;
   celsiusTemperature = response.data.main.temp;
@@ -216,13 +163,6 @@ function showCurrentWeather(position) {
 }
 
 navigator.geolocation.getCurrentPosition(showPosition);
-
-let celsiusTemperature = null;
-
-let celsius = document.querySelector("#celsius");
-let farenheit = document.querySelector("#farenheit");
-celsius.addEventListener("click", changeCelsiusScale);
-farenheit.addEventListener("click", changeFarenheitScale);
 
 let searchCity = document.querySelector("#search");
 searchCity.addEventListener("submit", changeCity);
