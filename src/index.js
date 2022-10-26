@@ -70,31 +70,51 @@ function changeCelsiusScale(event) {
   currentDegree.innerHTML = Math.round(celsiusTemperature);
 }
 
+// Funciton return day names
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 //Function displays forecast
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
       <div class="weather-forecast row justify-content-md-center">
             <div class="card border-info mb-1 weekday-block">
-              <div class="card-header weekday" id="first-day">${day}</div>
+              <div class="card-header weekday" id="first-day">${formatDay(
+                forecastDay.dt
+              )}</div>
               <div class="card-body text-info">
-                <h5 class="card-title weekday-temperature"><span class="weather-forecast-temperature-max"> 18° </span>
-          <span class="weather-forecast-temperature-min"> 12° </span></h5>
+                <h5 class="card-title weekday-temperature"><span class="weather-forecast-temperature-max"> ${Math.round(
+                  forecastDay.temp.max
+                )}° <span>|<span>
+                </span>
+          <span class="weather-forecast-temperature-min"> ${Math.round(
+            forecastDay.temp.min
+          )}° </span></h5>
                 <p class="card-text"><img
-          src="https://openweathermap.org/img/wn/50d@2x.png"
+          src="https://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
           alt=""
           width="42"
         /></p>
               </div>
             </div> 
-  `;
+    `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;

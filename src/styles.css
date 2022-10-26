@@ -130,3 +130,10 @@ body {
 .weather-forecast {
   margin-left: 0;
 }
+.weather-forecast-temperature-max {
+  color: black;
+}
+
+.weather-forecast-temperature-min {
+  color: rgb(0, 0, 0, 0.6);
+}
