@@ -87,7 +87,7 @@ function displayForecast() {
                 <h5 class="card-title weekday-temperature"><span class="weather-forecast-temperature-max"> 18° </span>
           <span class="weather-forecast-temperature-min"> 12° </span></h5>
                 <p class="card-text"><img
-          src="http://openweathermap.org/img/wn/50d@2x.png"
+          src="https://openweathermap.org/img/wn/50d@2x.png"
           alt=""
           width="42"
         /></p>
